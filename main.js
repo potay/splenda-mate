@@ -33,10 +33,15 @@ console.log(data);
 //Get Data Keys:
 function getObjectKeysNames(data){
   var houseMateNames = Object.keys(data);
-  console.log(data);
   console.log(houseMateNames);
+  var internet;
+  var rent;
+  var utilities;
+
   for (var i in houseMateNames){
-    console.log(billKeys);
+    internet = data[houseMateNames[i]].internet;
+    rent = data[houseMateNames[i]].rent;
+    utilities = data[houseMateNames[i]].utilities;
   }
 
 }
