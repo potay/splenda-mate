@@ -5,6 +5,8 @@ html(lang="en")
       title #{title}
     block css_framework
       link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/css/materialize.min.css")
+    block css_custom
+      link(rel="stylesheet", href="css/style.css")
   body
     block body_content
 
@@ -13,3 +15,6 @@ html(lang="en")
     block js_framework
       script(src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/js/materialize.min.js")
     block js_custom
+
+    
+
