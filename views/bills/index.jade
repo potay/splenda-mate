@@ -17,11 +17,19 @@ block body_content
     a.button-collapse(href="#" data-activates="slide-out")
       i.mdi-navigation-menu
 
-  div(style="margin-left: 240px;") 
-    // For 980px change CSS remove margin-left padding
+  div.main
+    // For 992px change CSS remove margin-left padding
     div.row
-      div.col.s12.m12.l12
-        p.backgroundtest :Akljdask;f
+      div.col.s12.m3.l3
+        div.card
+          div.card-image
+            img(src="#")
+            span.card-title User's Name  
+          div.card-content
+            p This area will contain information pertaining to the user.
+          div.card-action
+            a(href="#") See more about {{user}}
+
 
 block js_custom
   script(type="text/javascript")
