@@ -1,4 +1,15 @@
 exports.initRenderData = function(data, modules) {
+  /* Initiates Render Data to be passed into Jade Engine
+
+  Args:
+    data: (dictionary) Any initial data to be added.
+    modules: (string=>string dictionary) key - name to save module as,
+        value - filename of module. must be in render_modules folder.
+
+  Returns:
+    (dictionary) Data to be passed into Jade
+  */
+
   data = data || {};
   modules = modules || {};
   data['m'] = {};
