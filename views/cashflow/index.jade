@@ -29,26 +29,36 @@ block body_content
     div.container
       div.row
         div.col.s12
-          table.responsive-table.hoverable
+          table.responsive-table.striped
             thead
               tr
+                th
+                  input.filled-in(type="checkbox" id="item-select-all")
+                  label(for="item-select-all")
+                th(data-field='date') Date
                 th(data-field='item') Item
                 th(data-field='deposit') Deposit
                 th(data-field='withdrawal') Withdrawal
                 th(data-field='balance') Balance
-                th(data-field='timestamp') Timestamp
             tbody
               each item in cashflow
                 tr
+                  td
+                    input.filled-in(type="checkbox" id=item._id)
+                    label(for=item._id)
+                  td
+                    =item.timestamp.getDate()+' '
+                    =m.time.getMonthString(item.timestamp, true)+' '
+                    =item.timestamp.getFullYear()
                   td=item.item
                   td=item.deposit
                   td=item.withdrawal
                   td=item.balance
-                  td=item.timestamp
 
 
   block js_custom
-    script(src="js/Chart.js")
+    script(src="js/Chart.min.js")
+    script(src="js/Chart.Scatter.min.js")
     script.
       Chart.defaults.global = {
         // Boolean - Whether to animate the chart

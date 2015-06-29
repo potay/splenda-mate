@@ -1,28 +1,28 @@
 var express = require('express');
 var router = express.Router();
 
+// Modules
+var cashflow = require('../modules/cashflow');
+var utils = require('../modules/utils');
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   var db = req.db;
 
-  var data = { title: 'Splenda Housemate Cashflow Analysis' };
+  var data = utils.initRenderData(
+    { title: 'Splenda Housemate Cashflow Analysis' },
+    { time: 'time'});
 
   db.collection('cashflow').find().toArray(function(err, result) {
     if (err) throw err;
-    console.log(result);
     data['cashflow'] = result;
-    console.log(data);
-    data['first'] = [];
-    data['second'] = [];
-    data['timestamp'] = [];
-    for (i in result) {
-      data['first'].push(result[i].deposit);
-      data['second'].push(result[i].withdrawal);
-      data['timestamp'].push(result[i].timestamp.toISOString());
-    }
-    console.log(data['first']);
-    console.log(data['second']);
-    console.log(data['timestamp']);
+    collatedData = cashflow.collateData(result,
+                                        ['deposit',
+                                         'withdrawal',
+                                         'timestamp'])
+    data['first'] = collatedData['deposit'];
+    data['second'] = collatedData['withdrawal'];
+    data['timestamp'] = collatedData['timestamp'];
     res.render('cashflow/index', data);
   });
 });
