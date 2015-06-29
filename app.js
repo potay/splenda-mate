@@ -26,6 +26,21 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Database (MongoDB)
+var db_user = 'splenda-mate';
+var db_pass = 'diamonddaddy';
+var db_host = 'ds045632.mongolab.com';
+var db_port = '45632';
+var db_name = 'splenda-mate';
+var mongoskin = require('mongoskin');
+var db = mongoskin.db('mongodb://'+db_user+':'+db_pass+'@'+db_host+':'+db_port+'/'+db_name);
+
+// Make database accessible to our router
+app.use(function(req,res,next){
+  req.db = db;
+  next();
+});
+
 // Routes
 app.use('/', routes);
 app.use('/users', users);
