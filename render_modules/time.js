@@ -1,4 +1,4 @@
-exports.getMonthString = function(timestamp, shortMode) {
+function getMonthString(timestamp, shortMode) {
   shortMode = shortMode || false
   var months = [];
   months[0] = "January";
@@ -18,3 +18,4 @@ exports.getMonthString = function(timestamp, shortMode) {
 
   return shortMode ? months[month_value].substring(0,3) : months[month_value];
 }
+exports.getMonthString = getMonthString;

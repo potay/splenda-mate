@@ -46,3 +46,24 @@ exports.collateData = function(data, fields) {
 
   return collatedData;
 }
+
+exports.collateDataPoints = function(xList, yList) {
+  /* Formats x and y data into data dictionary list ([{x:, y:}, {x:, y:}])
+
+  Args:
+    xList: (list) List of x data
+    yList: (list) List of y data
+
+  Returns:
+    (dictionary list) data dictionary list
+  */
+
+  return utils.zip(xList, yList).map(function(dataList){
+    return {x: dataList[0], y: dataList[1]};
+  });
+}
+
+function dateToCoordinate(point, range_start) {
+  return (point.getTime() - range_start.getTime());
+}
+exports.dateToCoordinate = dateToCoordinate;

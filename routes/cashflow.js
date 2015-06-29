@@ -20,8 +20,20 @@ router.get('/', function(req, res, next) {
                                         ['deposit',
                                          'withdrawal',
                                          'timestamp'])
-    data['first'] = collatedData['deposit'];
-    data['second'] = collatedData['withdrawal'];
+    data['first'] = cashflow.collateDataPoints(
+                      collatedData['timestamp'].map(function(timestamp) {
+                        return cashflow.dateToCoordinate(timestamp, new Date(2012, 01, 01, 0, 0, 0, 0));
+                      }),
+                      collatedData['deposit']
+                    );
+    data['second'] = cashflow.collateDataPoints(
+                       collatedData['timestamp'].map(function(timestamp) {
+                         return cashflow.dateToCoordinate(timestamp, new Date(2012, 01, 01, 0, 0, 0, 0));
+                       }),
+                       collatedData['withdrawal']
+                     );
+    console.log(data['first']);
+    console.log(data['second']);
     data['timestamp'] = collatedData['timestamp'];
     res.render('cashflow/index', data);
   });

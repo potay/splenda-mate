@@ -192,31 +192,22 @@ block body_content
         onAnimationComplete: function(){}
       }
 
-      var data = {
-        labels: !{JSON.stringify(timestamp)},
-        datasets: [
+      var data = [
           {
             label: "My First dataset",
-            fillColor: "rgba(220,220,220,0.3)",
             strokeColor: "rgba(220,220,220,1)",
             pointColor: "rgba(220,220,220,1)",
             pointStrokeColor: "#fff",
-            pointHighlightFill: "#fff",
-            pointHighlightStroke: "rgba(220,220,220,1)",
             data: !{JSON.stringify(first)}
           },
           {
             label: "My Second dataset",
-            fillColor: "rgba(151,187,205,0.2)",
             strokeColor: "rgba(151,187,205,1)",
             pointColor: "rgba(151,187,205,1)",
             pointStrokeColor: "#fff",
-            pointHighlightFill: "#fff",
-            pointHighlightStroke: "rgba(151,187,205,1)",
             data: !{JSON.stringify(second)}
           }
-        ]
-      };
+      ];
       var options = {
         ///Boolean - Whether grid lines are shown across the chart
         scaleShowGridLines : true,
@@ -265,4 +256,4 @@ block body_content
       };
       // Get the context of the canvas element we want to select
       var ctx = document.getElementById("myChart").getContext("2d");
-      var myNewChart = new Chart(ctx).Line(data, options);
+      var myNewChart = new Chart(ctx).Scatter(data, options);
