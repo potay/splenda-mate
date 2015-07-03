@@ -22,13 +22,13 @@ router.get('/', function(req, res, next) {
                                          'timestamp'])
     data['first'] = cashflow.collateDataPoints(
                       collatedData['timestamp'].map(function(timestamp) {
-                        return cashflow.dateToCoordinate(timestamp, new Date(2012, 01, 01, 0, 0, 0, 0));
+                        return new Date(timestamp);//cashflow.dateToCoordinate(timestamp, new Date(2012, 01, 01, 0, 0, 0, 0));
                       }),
                       collatedData['deposit']
                     );
     data['second'] = cashflow.collateDataPoints(
                        collatedData['timestamp'].map(function(timestamp) {
-                         return cashflow.dateToCoordinate(timestamp, new Date(2012, 01, 01, 0, 0, 0, 0));
+                         return new Date(timestamp);//cashflow.dateToCoordinate(timestamp, new Date(2012, 01, 01, 0, 0, 0, 0));
                        }),
                        collatedData['withdrawal']
                      );
