@@ -11,10 +11,10 @@ block body_content
         a(href="#!") Sign up to be a Paultato
     ul#slide-out.side-nav.fixed.col.s12.m4.l3
       li
-        a(href="#!") Bills
+        a(href="bills") Bills
       li
-        a(href="#!") Cashflow
-    a.button-collapse(href="#" data-activates="slide-out")
+        a(href="cashflow") Cashflow
+    a.button-collapse(href="cashflow" data-activates="slide-out")
       i.mdi-navigation-menu
 
   div.main
@@ -27,7 +27,7 @@ block body_content
             img(src="img/user.jpg")
             span.card-title Paul
           div.card-content
-            p Status: "I like to be a good boy and pay bills on time!"
+            p Status: {{#paidStatus}} 
           div.card-action
             a(href="#") See more about {{#user}} 
       div.col.s10.m5.l3.cost-breakdown
@@ -37,37 +37,6 @@ block body_content
         h4 Miscellaneous: {{#other}}
       canvas#billDoughnut(width="400", height="400")
 
-
-        
-
-
 block js_custom
   script(type="text/javascript")
     $(".button-collapse").sideNav();
-
-  //Script to pull billing information from
-  //backend: Rent, Power, Internet, Other.
-  //This should be passed into following script
-  //into data's value segments.
-  script(type="text/javascript")
-    var data = [{
-      value: 300,
-      color:"#F7464A",
-      highlight: "#FF5A5E",
-      label: "Red"
-      },
-      {
-          value: 50,
-          color: "#46BFBD",
-          highlight: "#5AD3D1",
-          label: "Green"
-      },
-      {
-          value: 100,
-          color: "#FDB45C",
-          highlight: "#FFC870",
-          label: "Yellow"
-      }
-    ]
-
-    var myDoughnutChart = new Chart(ctx[1]).Doughnut(data,options);
